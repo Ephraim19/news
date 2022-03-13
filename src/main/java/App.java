@@ -46,6 +46,20 @@ public class App {
             response.status(201);
             return gson.toJson(department);
         });
+        //read users
+        get("/users", "application/json", (req, res) -> {
+            System.out.println(userDao.getAll());
+
+            if(userDao.getAll().size() > 0){
+                return gson.toJson(userDao.getAll());
+            }
+
+            else {
+                return "{\"message\":\"No users with the id.\"}";
+            }
+
+        });
+
     }
 }
 

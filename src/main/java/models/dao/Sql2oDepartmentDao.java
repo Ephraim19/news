@@ -1,6 +1,9 @@
 package models.dao;
 import models.Department;
+import models.User;
 import org.sql2o.*;
+
+import java.util.List;
 
 public class Sql2oDepartmentDao implements DepartmentDao {
     private final Sql2o sql2o;
@@ -20,6 +23,23 @@ public class Sql2oDepartmentDao implements DepartmentDao {
             department.setId(id);
         } catch (Sql2oException e) {
             System.out.println(e);
+        }
+    }
+
+    @Override
+    public List<User> getAll() {
+        try (Connection con = sql2o.open()) {
+            return con.createQuery("SELECT * FROM departments")
+                    .executeAndFetch(User.class);
+        }
+    }
+
+    @Override
+    public User findById(int id) {
+        try (Connection con = sql2o.open()) {
+            return con.createQuery("SELECT * FROM departments WHERE id = :id")
+                    .addParameter("id", id)
+                    .executeAndFetchFirst(User.class);
         }
     }
 }
