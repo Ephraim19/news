@@ -1,12 +1,14 @@
 package models;
 
 public class User {
+    private Integer id;
     private String name;
     private String position;
     private String role;
     private String department;
 
     public User(String name, String position, String role, String department) {
+        this.id = id;
         this.name = name;
         this.position = position;
         this.role = role;
@@ -27,5 +29,9 @@ public class User {
 
     public String getDepartment() {
         return department;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }
