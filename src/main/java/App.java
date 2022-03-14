@@ -51,36 +51,37 @@ public class App {
         });
         //read users
         get("/users", "application/json", (req, res) -> {
-            System.out.println(userDao.getAll());
-
-            if(userDao.getAll().size() > 0){
-                return gson.toJson(userDao.getAll());
-            }
-
-            else {
-                return "{\"message\":\"No users found.\"}";
-            }
+            return gson.toJson(userDao.getAll());
 
         });
 
         get("/users/:id", "application/json", (req, res) -> {
             int UserId = Integer.parseInt(req.params("id"));
             User user = userDao.findById(UserId);
-            return gson.toJson(UserId);
+            return gson.toJson(user);
         });
+
         //read departments
         get("/departments", "application/json", (req, res) -> {
-
-            if(departmentDao.getAll().size() > 0){
-                return gson.toJson(departmentDao.getAll());
-            }
-
-            else {
-                return "{\"message\":\"No departments found.\"}";
-            }
-
+            return gson.toJson(departmentDao.getAll());
         });
 
+        get("/departments/:id", "application/json", (req, res) -> {
+            int UserId = Integer.parseInt(req.params("id"));
+            Department department = departmentDao.findById(UserId);
+            return gson.toJson(department);
+        });
+
+        //read news
+        get("/news", "application/json", (req, res) -> {
+            return gson.toJson(newsDao.getAll());
+        });
+
+        get("/news/:id", "application/json", (req, res) -> {
+            int UserId = Integer.parseInt(req.params("id"));
+            News news = newsDao.findById(UserId);
+            return gson.toJson(news);
+        });
 
     }
 }

@@ -1,6 +1,5 @@
 package models.dao;
 import models.Department;
-import models.User;
 import org.sql2o.*;
 
 import java.util.List;
@@ -27,19 +26,19 @@ public class Sql2oDepartmentDao implements DepartmentDao {
     }
 
     @Override
-    public List<User> getAll() {
+    public List<Department> getAll() {
         try (Connection con = sql2o.open()) {
             return con.createQuery("SELECT * FROM departments")
-                    .executeAndFetch(User.class);
+                    .executeAndFetch(Department.class);
         }
     }
 
     @Override
-    public User findById(int id) {
+    public Department findById(int id) {
         try (Connection con = sql2o.open()) {
             return con.createQuery("SELECT * FROM departments WHERE id = :id")
                     .addParameter("id", id)
-                    .executeAndFetchFirst(User.class);
+                    .executeAndFetchFirst(Department.class);
         }
     }
 }
