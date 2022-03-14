@@ -42,10 +42,12 @@ public class App {
         });
         //Create departments
         post("/departments/new", "application/json", (request, response) -> {
-            Department department = gson.fromJson(request.body(), Department.class);
-            departmentDao.add(department);
-            response.status(201);
-            return gson.toJson(department);
+            Department department = gson.fromJson(request.body(), Department.class);//make with GSON
+            departmentDao.add(department);//Do our thing with our DAO
+            response.status(201);//everything went well - update the response status code
+            response.type("application/json");
+            return gson.toJson(department);//send it back to be displayed
+
         });
         //read users
         get("/users", "application/json", (req, res) -> {
