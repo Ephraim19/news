@@ -3,7 +3,6 @@ import models.*;
 import models.dao.*;
 import com.google.gson.Gson;
 import org.sql2o.*;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +16,7 @@ public class App {
         Gson gson = new Gson();
 
         String connectionString = "jdbc:postgresql://localhost:5432/news_api";
-        Sql2o sql2o = new Sql2o(connectionString, "eph1717", "eph1717");
+        Sql2o sql2o = new Sql2o(connectionString, "ephu17", "ephu17");
 
         userDao = new Sql2oUserDao(sql2o);
         newsDao = new Sql2oNewsDao(sql2o);
@@ -26,18 +25,20 @@ public class App {
 
         //Create user
         post("/user/new", "application/json", (request, response) -> {
-            User user = gson.fromJson(request.body(), User.class);
-            userDao.add(user);
-            response.status(201);
-            return gson.toJson(user);
+            User user = gson.fromJson(request.body(), User.class);//make with GSON
+            userDao.add(user);//Do our thing with our DAO
+            response.status(201);//everything went well - update the response status code
+            response.type("application/json");
+            return gson.toJson(user);//send it back to be displayed
         });
 
         //Create news
         post("/news/new", "application/json", (request, response) -> {
-            News news = gson.fromJson(request.body(), News.class);
-            newsDao.add(news);
-            response.status(201);
-            return gson.toJson(news);
+            News news = gson.fromJson(request.body(), News.class);//make with GSON
+            newsDao.add(news);//Do our thing with our DAO
+            response.status(201);//everything went well - update the response status code
+            response.type("application/json");
+            return gson.toJson(news);//send it back to be displayed
         });
         //Create departments
         post("/departments/new", "application/json", (request, response) -> {
@@ -55,10 +56,29 @@ public class App {
             }
 
             else {
-                return "{\"message\":\"No users with the id.\"}";
+                return "{\"message\":\"No users found.\"}";
             }
 
         });
+
+        get("/users/:id", "application/json", (req, res) -> {
+            int UserId = Integer.parseInt(req.params("id"));
+            User user = userDao.findById(UserId);
+            return gson.toJson(UserId);
+        });
+        //read departments
+        get("/departments", "application/json", (req, res) -> {
+
+            if(departmentDao.getAll().size() > 0){
+                return gson.toJson(departmentDao.getAll());
+            }
+
+            else {
+                return "{\"message\":\"No departments found.\"}";
+            }
+
+        });
+
 
     }
 }
