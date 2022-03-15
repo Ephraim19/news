@@ -1,0 +1,10 @@
+/home/eph/eclipse-workspace/news-api/src/main/java/models/Department.java
+/home/eph/eclipse-workspace/news-api/src/main/java/models/News.java
+/home/eph/eclipse-workspace/news-api/src/main/java/App.java
+/home/eph/eclipse-workspace/news-api/src/main/java/models/dao/NewsDao.java
+/home/eph/eclipse-workspace/news-api/src/main/java/models/dao/Sql2oDepartmentDao.java
+/home/eph/eclipse-workspace/news-api/src/main/java/models/dao/Sql2oNewsDao.java
+/home/eph/eclipse-workspace/news-api/src/main/java/models/dao/Sql2oUserDao.java
+/home/eph/eclipse-workspace/news-api/src/main/java/models/User.java
+/home/eph/eclipse-workspace/news-api/src/main/java/models/dao/DepartmentDao.java
+/home/eph/eclipse-workspace/news-api/src/main/java/models/dao/UserDao.java
