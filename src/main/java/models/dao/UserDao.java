@@ -10,6 +10,4 @@ public interface UserDao {
     //read users
     List<User> getAll();
     User findById(int id);
-    List<User> getUserDepartment(String department);
-
 }
