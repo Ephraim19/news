@@ -40,6 +40,15 @@ public class Sql2oUserDao implements UserDao {
                     .executeAndFetchFirst(User.class);
         }
     }
+
+    @Override
+    public List<User> getUserDepartment(String department) {
+        try (Connection con = sql2o.open()) {
+            return con.createQuery("SELECT * FROM users WHERE department = :department")
+                    .addParameter("department",department)
+                    .executeAndFetch(User.class);
+        }
+    }
 }
 
 
