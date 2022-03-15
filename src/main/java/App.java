@@ -94,13 +94,7 @@ public class App {
             News news = newsDao.findById(UserId);
             return gson.toJson(news);
         });
-
-        //getting all users in a specific department
-        get("/dep/:department", "application/json", (req, res) -> {
-            int Userdep = Integer.parseInt(req.params("department"));
-            User users = userDao.findById(Userdep);
-            return gson.toJson(users);
-        });
+        
 
     }
 }
