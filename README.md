@@ -2,7 +2,7 @@
 * This is a REST api for creating and retrieving news.
 
 ## Description
-* This is a spark api that allows users to create
+* This is a spark api that allows users to register,create departments, create news and read them.
 #### Author: **EPHRAIM MOKAMBA**
 
 
