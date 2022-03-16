@@ -37,39 +37,45 @@ public class App {
 
         //Create user
         post("/user/new", "application/json", (request, response) -> {
-            User user = gson.fromJson(request.body(), User.class);//make with GSON
-            userDao.add(user);//Do our thing with our DAO
-            response.status(201);//everything went well - update the response status code
+            User user = gson.fromJson(request.body(), User.class);
+            userDao.add(user);
+            response.status(201);
             response.type("application/json");
-            return gson.toJson(user);//send it back to be displayed
+            return gson.toJson(user);
         });
 
         //Create news
         post("/news/new", "application/json", (request, response) -> {
-            News news = gson.fromJson(request.body(), News.class);//make with GSON
-            newsDao.add(news);//Do our thing with our DAO
-            response.status(201);//everything went well - update the response status code
+            News news = gson.fromJson(request.body(), News.class);
+            newsDao.add(news);
+            response.status(201);
             response.type("application/json");
-            return gson.toJson(news);//send it back to be displayed
+            return gson.toJson(news);
         });
         //Create departments
         post("/departments/new", "application/json", (request, response) -> {
-            Department department = gson.fromJson(request.body(), Department.class);//make with GSON
-            departmentDao.add(department);//Do our thing with our DAO
-            response.status(201);//everything went well - update the response status code
+            Department department = gson.fromJson(request.body(), Department.class);
+            departmentDao.add(department);
+            response.status(201);
             response.type("application/json");
-            return gson.toJson(department);//send it back to be displayed
+            return gson.toJson(department);
 
         });
         //read users
         get("/users", "application/json", (req, res) -> {
-            return gson.toJson(userDao.getAll());
-
+            if(userDao.getAll().size() > 0) {
+                return gson.toJson(userDao.getAll());
+            }else{
+                return "{\"message\":\"No users are currently listed in the database.\"}";
+            }
         });
 
         get("/users/:id", "application/json", (req, res) -> {
             int UserId = Integer.parseInt(req.params("id"));
             User user = userDao.findById(UserId);
+            if(user == null){
+                return "{\"message\":\"No users with the id currently listed in the database.\"}";
+            }
             return gson.toJson(user);
         });
 
