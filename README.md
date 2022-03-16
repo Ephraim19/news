@@ -29,19 +29,19 @@ view users
 [https://pure-cove-25994.herokuapp.com/users](*)
 
 view users by id
-[https://pure-cove-25994.herokuapp.com/users/{{id}}](*)
+[https://pure-cove-25994.herokuapp.com/users/:id](*)
 
 view departments
 [https://pure-cove-25994.herokuapp.com/departments](*)
 
 view departments by id
-[https://pure-cove-25994.herokuapp.com/departments/{{id}}](*)
+[https://pure-cove-25994.herokuapp.com/departments/:id](*)
 
 view news
 [https://pure-cove-25994.herokuapp.com/news](*)
 
 view departments by id
-[https://pure-cove-25994.herokuapp.com/news/{{id}}](*)
+[https://pure-cove-25994.herokuapp.com/news/:id](*)
 
 
 
