@@ -18,12 +18,12 @@ class UserTest {
     @Test
     void checksIfRoleGetterMethodReturnsValue() {
         User user = new User("eph","manager","editor","sports");
-        assertEquals("eph",user.getRole());
+        assertEquals("editor",user.getRole());
     }
     @Test
     void checksIfDepartmentGetterMethodReturnsValue() {
         User user = new User("eph","manager","editor","sports");
-        assertEquals("eph",user.getDepartment());
+        assertEquals("sports",user.getDepartment());
     }
 }
 

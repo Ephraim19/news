@@ -25,10 +25,10 @@ public class App {
         Gson gson = new Gson();
 
         String connectionString = "jdbc:postgresql://localhost:5432/news_api";
-       Sql2o sql2o = new Sql2o(connectionString, "ephu17", "ephu17");
+     Sql2o sql2o = new Sql2o(connectionString, "ephu17", "ephu17");
 
-//        String connectionString = "jdbc:postgresql://ec2-44-194-167-63.compute-1.amazonaws.com:5432/da0v6pcmgs8d87";
-//        Sql2o sql2o = new Sql2o(connectionString, "oqwkhjkocsrmvg", "2f8eacbc3b57758a99ccfb6b68f953bc32c170ad0d00aed5b5720fb1144fbcaa");
+  //  String connectionString = "jdbc:postgresql://ec2-44-194-167-63.compute-1.amazonaws.com:5432/da0v6pcmgs8d87";
+ //   Sql2o sql2o = new Sql2o(connectionString, "oqwkhjkocsrmvg", "2f8eacbc3b57758a99ccfb6b68f953bc32c170ad0d00aed5b5720fb1144fbcaa");
 
         userDao = new Sql2oUserDao(sql2o);
         newsDao = new Sql2oNewsDao(sql2o);
