@@ -74,6 +74,7 @@ public class App {
             int UserId = Integer.parseInt(req.params("id"));
             User user = userDao.findById(UserId);
             if(user == null){
+                res.status(404);
                 return "{\"message\":\"No users with the id currently listed in the database.\"}";
             }
             return gson.toJson(user);
@@ -81,24 +82,40 @@ public class App {
 
         //read departments
         get("/departments", "application/json", (req, res) -> {
-            return gson.toJson(departmentDao.getAll());
+            if(departmentDao.getAll().size() > 0) {
+                return gson.toJson(departmentDao.getAll());
+            }else {
+                return "{\"message\":\"No departments are currently listed in the database.\"}";
+            }
         });
 
         get("/departments/:id", "application/json", (req, res) -> {
             int UserId = Integer.parseInt(req.params("id"));
             Department department = departmentDao.findById(UserId);
+            if(department == null){
+                res.status(404);
+                return "{\"message\":\"No departments with the id currently listed in the database.\"}";
+            }
             return gson.toJson(department);
         });
 
         //read news
         get("/news", "application/json", (req, res) -> {
-            return gson.toJson(newsDao.getAll());
+            if(newsDao.getAll().size() > 0) {
+                return gson.toJson(newsDao.getAll());
+            }else {
+                return "{\"message\":\"No news are currently listed in the database.\"}";
+            }
         });
 
 
         get("/news/:id", "application/json", (req, res) -> {
             int UserId = Integer.parseInt(req.params("id"));
             News news = newsDao.findById(UserId);
+            if(news == null){
+                res.status(404);
+                return "{\"message\":\"No news with the id currently listed in the database.\"}";
+            }
             return gson.toJson(news);
         });
         
