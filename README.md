@@ -15,13 +15,13 @@
 POST METHODS
 
 create users
-[https://pure-cove-25994.herokuapp.com/user/new](*)
+[https://pure-cove-25994.herokuapp.com/user/new](*) API params : name,position,role,department
 
 create news
-[https://pure-cove-25994.herokuapp.com/news/new](*)
+[https://pure-cove-25994.herokuapp.com/news/new](*) API params :title,description,department
 
 create departments
-[https://pure-cove-25994.herokuapp.com/departments/new](*)
+[https://pure-cove-25994.herokuapp.com/departments/new](*) API params : departmentName,description,numberOfPeople
 
 GET METHODS
 
