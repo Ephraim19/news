@@ -6,5 +6,6 @@ models/Department.class
 models/News.class
 models/dao/Sql2oUserDao.class
 models/dao/UserDao.class
+exceptions/ApiException.class
 App.class
 models/dao/NewsDao.class
